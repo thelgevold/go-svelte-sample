@@ -9,9 +9,18 @@ svelte(
 )
 
 bundle_prod(
-    name = "bundle_prod",
+    name = "bundle_prod_closure",
     entry_point = "main.js",
     closure_config = ":closure-config.json",
+    deps = [
+        ":App",
+        "@npm//rxjs",
+    ],
+)
+
+bundle_prod(
+    name = "bundle_prod_rollup",
+    entry_point = "main.js",
     deps = [
         ":App",
         "@npm//rxjs",

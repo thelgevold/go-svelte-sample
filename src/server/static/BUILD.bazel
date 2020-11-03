@@ -1,13 +1,20 @@
 package(default_visibility = ["//visibility:public"])
 
 genrule(
-    name = "bundle",
-    srcs = ["//src/client:bundle_prod"],
-    outs = ["bundle.min.js"],
+    name = "bundle_closure",
+    srcs = ["//src/client:bundle_prod_closure"],
+    outs = ["bundle-closure.min.js"],
+    cmd = "cp $< $@",
+)
+
+genrule(
+    name = "bundle_rollup",
+    srcs = ["//src/client:bundle_prod_rollup"],
+    outs = ["bundle-rollup.min.js"],
     cmd = "cp $< $@",
 )
 
 filegroup(
     name = "static",
-    srcs = ["index.html", ":bundle"],
+    srcs = ["index.html", ":bundle_closure", ":bundle_rollup"],
 )
