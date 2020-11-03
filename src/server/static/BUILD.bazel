@@ -1,0 +1,13 @@
+package(default_visibility = ["//visibility:public"])
+
+genrule(
+    name = "bundle",
+    srcs = ["//src/client:bundle_prod"],
+    outs = ["bundle.min.js"],
+    cmd = "cp $< $@",
+)
+
+filegroup(
+    name = "static",
+    srcs = ["index.html", ":bundle"],
+)

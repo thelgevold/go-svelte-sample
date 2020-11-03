@@ -1,0 +1,19 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@build_bazel_rules_svelte//:defs.bzl", "bundle_prod", "svelte")
+
+svelte(
+    name = "App",
+    srcs = ["main.js"],
+    entry_point = "App.svelte",
+)
+
+bundle_prod(
+    name = "bundle_prod",
+    entry_point = "main.js",
+    closure_config = ":closure-config.json",
+    deps = [
+        ":App",
+        "@npm//rxjs",
+    ],
+)

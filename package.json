@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@bazel/bazelisk": "1.7.3",
+    "@bazel/ibazel": "^0.13.2"
+  },
+  "dependencies": {
+    "rxjs": "6.6.3"
+  },
+  "scripts": {
+    "serve": "ibazel run //src/server"
+  }
+}
